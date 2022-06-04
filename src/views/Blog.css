@@ -1,0 +1,13 @@
+.post_cover {
+    height: 500px;
+    object-fit: cover;
+    border-radius: 50px;
+    width: 100%;
+}
+
+.author_container {
+    width: 100%;
+    background-color: rgb(116, 116,116);
+    display: flex;
+    border-radius: 25px;
+}
