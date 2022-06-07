@@ -1,12 +1,14 @@
 import { Col, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { addToWishlist } from "../../helpers";
+
 function Post({ post }) {
 	const [showButton, setShowButton] = useState(false);
 	return (
 		<Col
 			xs='12'
-			sd='6'
+			md='6'
 			onMouseEnter={() => {
 				setShowButton(true);
 			}}
@@ -15,7 +17,10 @@ function Post({ post }) {
 			}}>
 			<Link
 				to={"/blog/" + post.id}
-				style={{ textDecoration: "none", color: "black" }}>
+				style={{
+					textDecoration: "none",
+					color: "black",
+				}}>
 				<img
 					src={`https://picsum.photos/seed/${post.id}/600`}
 					style={{
@@ -29,8 +34,15 @@ function Post({ post }) {
 				<p>{post.body}</p>
 			</Link>
 			<div style={{ minHeight: "50px" }}>
-				{showButton && <Button outline>Add to wishlist</Button>}
-				<Button outline>Ad to wishlist</Button>
+				{showButton && (
+					<Button
+						outline
+						onClick={() => {
+							addToWishlist(post);
+						}}>
+						Add to wishlist!
+					</Button>
+				)}
 			</div>
 		</Col>
 	);

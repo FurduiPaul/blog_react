@@ -1,4 +1,4 @@
-import "./home.css";
+import "./Home.css";
 import { Container, Row, Button } from "reactstrap";
 import { useState, useEffect } from "react";
 import Post from "../components/Home/Post";
@@ -8,28 +8,29 @@ function Home() {
 	const [posts, setPosts] = useState(null);
 	const [postCounter, setPostCounter] = useState(counterSize);
 	const getPosts = async () => {
-		const responseData = await fetch(
+		const responsaData = await fetch(
 			"https://jsonplaceholder.typicode.com/posts"
 		);
-		const apiPosts = await responseData.json();
+		const apiPosts = await responsaData.json();
+		console.log(apiPosts);
 		setPosts(apiPosts);
 	};
 	useEffect(() => {
 		getPosts();
 	}, []);
+
 	return (
 		<>
 			<Container>
 				<Row>
 					<div
 						style={{
-							height: "100vh",
 							width: "100%",
-							backgroundColor: "white",
 						}}>
 						<img
 							className='cover_image'
-							src='https://images.unsplash.com/photo-1546074177-ffdda98d214f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80'></img>
+							src='https://images.unsplash.com/photo-1546074177-ffdda98d214f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80'
+						/>
 					</div>
 				</Row>
 				<Row>
@@ -50,7 +51,7 @@ function Home() {
 						onClick={() => {
 							setPostCounter(postCounter + counterSize);
 						}}>
-						Show more
+						Show more!
 					</Button>
 				</Row>
 			</Container>
